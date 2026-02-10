@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="mb-4">Contact Us</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Get in Touch</h3>
+            <p class="lead">Have questions? We'd love to hear from you!</p>
+
+            <div class="mt-4">
+                <h5><i class="fas fa-map-marker-alt text-primary"></i> Address</h5>
+                <p>123 Education Lane<br>Colombo 07<br>Sri Lanka</p>
+
+                <h5 class="mt-4"><i class="fas fa-phone text-primary"></i> Phone</h5>
+                <p>+94 11 234 5678</p>
+
+                <h5 class="mt-4"><i class="fas fa-envelope text-primary"></i> Email</h5>
+                <p>info@achievers.lk<br>admissions@achievers.lk</p>
+
+                <h5 class="mt-4"><i class="fas fa-clock text-primary"></i> Hours</h5>
+                <p>Monday - Friday: 8:00 AM - 8:00 PM<br>Saturday: 9:00 AM - 5:00 PM<br>Sunday: Closed</p>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h3>Send Us a Message</h3>
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> Contact form will be available soon. For now, please email us directly at <strong>info@achievers.lk</strong>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-body bg-light">
+                    <h5>Visit Us</h5>
+                    <p>Come visit our center to see our facilities and meet our teachers. We're open Monday through Saturday.</p>
+                    <a href="/admin/" class="btn btn-primary">Access Admin Portal</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+Django==5.0
+django-environ
+gunicorn
+whitenoise
+Pillow
+django-allauth
+qrcode[pil]
+python-barcode
+dj-database-url
