@@ -2,95 +2,505 @@
 
 {% block title %}{{ title }}{% endblock %}
 
+{% block extra_css %}
+<style>
+    .hero-carousel .carousel-item {
+        height: 600px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    .hero-carousel .carousel-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(124, 58, 237, 0.8) 100%);
+    }
+
+    .hero-carousel .carousel-caption {
+        bottom: 50%;
+        transform: translateY(50%);
+        z-index: 10;
+    }
+
+    .course-card {
+        transition: transform 0.3s, box-shadow 0.3s;
+        overflow: hidden;
+        border-radius: 15px;
+    }
+
+    .course-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+
+    .course-card img {
+        height: 220px;
+        object-fit: cover;
+        transition: transform 0.3s;
+    }
+
+    .course-card:hover img {
+        transform: scale(1.1);
+    }
+
+    .testimonial-card {
+        background: white;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        height: 100%;
+    }
+
+    .stat-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+    }
+
+    .feature-img {
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        transition: transform 0.3s;
+    }
+
+    .feature-img:hover {
+        transform: scale(1.05);
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<!-- Hero Section -->
-<div class="bg-primary text-white py-5">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <h1 class="display-4 fw-bold mb-3">Welcome to Achievers Learning Center</h1>
-                <p class="lead mb-4">Excellence in Education for Grades 1-13 and Language Courses</p>
-                <div class="d-flex gap-3">
-                    <a href="{% url 'account_signup' %}" class="btn btn-warning btn-lg">
-                        <i class="fas fa-user-plus"></i> Get Started
+<!-- Hero Carousel -->
+<div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+    </div>
+
+    <div class="carousel-inner">
+        <!-- Slide 1 - Main Welcome -->
+        <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&h=600&fit=crop');">
+            <div class="carousel-caption">
+                <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInDown">Welcome to Achievers Learning Center</h1>
+                <p class="lead mb-4 fs-3 animate__animated animate__fadeInUp">Excellence in Education for Grades 1-13 and Language Courses</p>
+                <div class="d-flex gap-3 justify-content-center animate__animated animate__fadeInUp">
+                    <a href="{% url 'account_signup' %}" class="btn btn-warning btn-lg px-5 py-3">
+                        <i class="fas fa-user-plus"></i> Get Started Free
                     </a>
-                    <a href="#courses" class="btn btn-outline-light btn-lg">
-                        <i class="fas fa-book"></i> Browse Courses
+                    <a href="#courses" class="btn btn-outline-light btn-lg px-5 py-3">
+                        <i class="fas fa-book"></i> Explore Courses
                     </a>
                 </div>
             </div>
-            <div class="col-lg-6 text-center">
-                <i class="fas fa-graduation-cap" style="font-size: 15rem; opacity: 0.2;"></i>
+        </div>
+
+        <!-- Slide 2 - Language Courses -->
+        <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1920&h=600&fit=crop');">
+            <div class="carousel-caption">
+                <h1 class="display-3 fw-bold mb-3">Learn German & Japanese</h1>
+                <p class="lead mb-4 fs-3">Professional Language Courses with Expert Native Teachers</p>
+                <a href="{% url 'account_signup' %}" class="btn btn-warning btn-lg px-5 py-3">
+                    <i class="fas fa-globe"></i> Start Learning Today
+                </a>
+            </div>
+        </div>
+
+        <!-- Slide 3 - Online Learning -->
+        <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=1920&h=600&fit=crop');">
+            <div class="carousel-caption">
+                <h1 class="display-3 fw-bold mb-3">Online & Physical Classes</h1>
+                <p class="lead mb-4 fs-3">Flexible Learning Options - Study Anytime, Anywhere</p>
+                <a href="#features" class="btn btn-outline-light btn-lg px-5 py-3">
+                    <i class="fas fa-video"></i> Learn More
+                </a>
             </div>
         </div>
     </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
 </div>
 
 <!-- Statistics Section -->
-<div class="container my-5">
-    <div class="row text-center">
-        <div class="col-md-3 mb-4">
-            <div class="p-4">
-                <i class="fas fa-users fa-3x text-primary mb-3"></i>
-                <h3 class="fw-bold">500+</h3>
-                <p class="text-muted">Students Enrolled</p>
+<div class="container my-5 py-5">
+    <div class="row text-center g-4">
+        <div class="col-md-3">
+            <div class="stat-icon">
+                <i class="fas fa-users fa-2x text-white"></i>
             </div>
+            <h2 class="fw-bold text-primary display-5">500+</h2>
+            <p class="text-muted fs-5">Students Enrolled</p>
         </div>
-        <div class="col-md-3 mb-4">
-            <div class="p-4">
-                <i class="fas fa-chalkboard-teacher fa-3x text-primary mb-3"></i>
-                <h3 class="fw-bold">20+</h3>
-                <p class="text-muted">Expert Teachers</p>
+        <div class="col-md-3">
+            <div class="stat-icon">
+                <i class="fas fa-chalkboard-teacher fa-2x text-white"></i>
             </div>
+            <h2 class="fw-bold text-primary display-5">20+</h2>
+            <p class="text-muted fs-5">Expert Teachers</p>
         </div>
-        <div class="col-md-3 mb-4">
-            <div class="p-4">
-                <i class="fas fa-book-open fa-3x text-primary mb-3"></i>
-                <h3 class="fw-bold">50+</h3>
-                <p class="text-muted">Courses Available</p>
+        <div class="col-md-3">
+            <div class="stat-icon">
+                <i class="fas fa-book-open fa-2x text-white"></i>
             </div>
+            <h2 class="fw-bold text-primary display-5">50+</h2>
+            <p class="text-muted fs-5">Courses Available</p>
         </div>
-        <div class="col-md-3 mb-4">
-            <div class="p-4">
-                <i class="fas fa-trophy fa-3x text-primary mb-3"></i>
-                <h3 class="fw-bold">95%</h3>
-                <p class="text-muted">Success Rate</p>
+        <div class="col-md-3">
+            <div class="stat-icon">
+                <i class="fas fa-trophy fa-2x text-white"></i>
+            </div>
+            <h2 class="fw-bold text-primary display-5">95%</h2>
+            <p class="text-muted fs-5">Success Rate</p>
+        </div>
+    </div>
+</div>
+
+<!-- About Section with Image -->
+<div class="bg-light py-5">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&h=600&fit=crop"
+                     alt="Students Learning" class="img-fluid feature-img">
+            </div>
+            <div class="col-lg-6">
+                <h2 class="display-5 fw-bold mb-4">Why Choose Achievers Learning Center?</h2>
+                <p class="lead mb-4">We provide world-class education with personalized attention to each student.</p>
+                <ul class="list-unstyled">
+                    <li class="mb-3">
+                        <i class="fas fa-check-circle text-success fa-lg me-2"></i>
+                        <strong>Expert Teachers:</strong> Highly qualified educators with years of experience
+                    </li>
+                    <li class="mb-3">
+                        <i class="fas fa-check-circle text-success fa-lg me-2"></i>
+                        <strong>Flexible Learning:</strong> Choose from physical, online, or hybrid classes
+                    </li>
+                    <li class="mb-3">
+                        <i class="fas fa-check-circle text-success fa-lg me-2"></i>
+                        <strong>Proven Results:</strong> 95% success rate in O/L and A/L examinations
+                    </li>
+                    <li class="mb-3">
+                        <i class="fas fa-check-circle text-success fa-lg me-2"></i>
+                        <strong>Modern Facilities:</strong> State-of-the-art classrooms and technology
+                    </li>
+                </ul>
+                <a href="{% url 'about' %}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-info-circle"></i> Learn More About Us
+                </a>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Features Section -->
-<div class="bg-light py-5" id="courses">
+<!-- Featured Courses Section -->
+<div class="container my-5 py-5" id="courses">
+    <div class="text-center mb-5">
+        <h2 class="display-5 fw-bold mb-3">Our Popular Courses</h2>
+        <p class="lead text-muted">Explore our wide range of courses designed for your success</p>
+    </div>
+
+    <div class="row g-4">
+        <!-- Course 1 - Mathematics -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card course-card border-0 shadow">
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=220&fit=crop"
+                     class="card-img-top" alt="Mathematics Course">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-primary">Grades 6-11</span>
+                        <span class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                    <h5 class="card-title fw-bold">Advanced Mathematics</h5>
+                    <p class="card-text text-muted">Comprehensive math program covering algebra, geometry, and calculus</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold fs-5">LKR 5,000/month</span>
+                        <a href="{% url 'account_signup' %}" class="btn btn-outline-primary">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course 2 - German Language -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card course-card border-0 shadow">
+                <img src="https://images.unsplash.com/photo-1527866959252-deab85ef7d1b?w=400&h=220&fit=crop"
+                     class="card-img-top" alt="German Language Course">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-success">All Levels</span>
+                        <span class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </span>
+                    </div>
+                    <h5 class="card-title fw-bold">German Language A1-C2</h5>
+                    <p class="card-text text-muted">Learn German from beginner to advanced with native speakers</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold fs-5">LKR 8,000/month</span>
+                        <a href="{% url 'account_signup' %}" class="btn btn-outline-primary">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course 3 - Japanese Language -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card course-card border-0 shadow">
+                <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?w=400&h=220&fit=crop"
+                     class="card-img-top" alt="Japanese Language Course">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-danger">Beginner-Advanced</span>
+                        <span class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                    <h5 class="card-title fw-bold">Japanese Language N5-N1</h5>
+                    <p class="card-text text-muted">Master Japanese language with JLPT exam preparation</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold fs-5">LKR 8,500/month</span>
+                        <a href="{% url 'account_signup' %}" class="btn btn-outline-primary">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course 4 - Science -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card course-card border-0 shadow">
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&h=220&fit=crop"
+                     class="card-img-top" alt="Science Course">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-info">Grades 6-11</span>
+                        <span class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                    <h5 class="card-title fw-bold">Combined Science</h5>
+                    <p class="card-text text-muted">Physics, Chemistry, and Biology with practical demonstrations</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold fs-5">LKR 6,000/month</span>
+                        <a href="{% url 'account_signup' %}" class="btn btn-outline-primary">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course 5 - English -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card course-card border-0 shadow">
+                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=220&fit=crop"
+                     class="card-img-top" alt="English Course">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-warning">All Grades</span>
+                        <span class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </span>
+                    </div>
+                    <h5 class="card-title fw-bold">English Language & Literature</h5>
+                    <p class="card-text text-muted">Improve your English speaking, writing, and comprehension skills</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold fs-5">LKR 4,500/month</span>
+                        <a href="{% url 'account_signup' %}" class="btn btn-outline-primary">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course 6 - IT -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card course-card border-0 shadow">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=220&fit=crop"
+                     class="card-img-top" alt="IT Course">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-dark">Grades 10-13</span>
+                        <span class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                    <h5 class="card-title fw-bold">Information Technology</h5>
+                    <p class="card-text text-muted">Learn programming, web development, and computer science</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold fs-5">LKR 7,000/month</span>
+                        <a href="{% url 'account_signup' %}" class="btn btn-outline-primary">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="{% url 'account_signup' %}" class="btn btn-primary btn-lg px-5">
+            <i class="fas fa-th-large"></i> View All Courses
+        </a>
+    </div>
+</div>
+
+<!-- Features Section with Images -->
+<div class="bg-light py-5" id="features">
     <div class="container">
-        <h2 class="text-center mb-5">What We Offer</h2>
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body text-center">
-                        <i class="fas fa-school fa-3x text-primary mb-3"></i>
-                        <h5 class="card-title">Physical Classes</h5>
-                        <p class="card-text">In-person learning at our state-of-the-art centers with experienced teachers.</p>
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">How We Teach</h2>
+            <p class="lead text-muted">Multiple learning modes to suit your needs</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm text-center">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&h=250&fit=crop"
+                         class="card-img-top" alt="Physical Classes">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-school fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Physical Classes</h5>
+                        <p class="card-text">In-person learning at our state-of-the-art centers with experienced teachers and interactive sessions.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body text-center">
-                        <i class="fas fa-video fa-3x text-primary mb-3"></i>
-                        <h5 class="card-title">Online Live Classes</h5>
-                        <p class="card-text">Interactive live sessions with real-time engagement from anywhere.</p>
+
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm text-center">
+                    <img src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=400&h=250&fit=crop"
+                         class="card-img-top" alt="Online Live Classes">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-video fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Online Live Classes</h5>
+                        <p class="card-text">Interactive live sessions with real-time engagement, screen sharing, and instant doubt resolution from anywhere.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body text-center">
-                        <i class="fas fa-play-circle fa-3x text-primary mb-3"></i>
-                        <h5 class="card-title">Recorded Courses</h5>
-                        <p class="card-text">Learn at your own pace with high-quality recorded video lessons.</p>
+
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm text-center">
+                    <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=400&h=250&fit=crop"
+                         class="card-img-top" alt="Recorded Courses">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-play-circle fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Recorded Courses</h5>
+                        <p class="card-text">Learn at your own pace with high-quality recorded video lessons available 24/7 for unlimited viewing.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials Section -->
+<div class="container my-5 py-5">
+    <div class="text-center mb-5">
+        <h2 class="display-5 fw-bold mb-3">What Our Students Say</h2>
+        <p class="lead text-muted">Success stories from our achievers</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="testimonial-card">
+                <div class="d-flex align-items-center mb-3">
+                    <img src="https://ui-avatars.com/api/?name=Kamal+Perera&background=2563EB&color=fff&size=60"
+                         class="rounded-circle me-3" alt="Student">
+                    <div>
+                        <h6 class="mb-0 fw-bold">Kamal Perera</h6>
+                        <small class="text-muted">Grade 11 - Science Stream</small>
+                    </div>
+                </div>
+                <div class="text-warning mb-2">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="text-muted">"The teachers are amazing! I improved my math grades from C to A+ in just 6 months. The online classes are very convenient."</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="testimonial-card">
+                <div class="d-flex align-items-center mb-3">
+                    <img src="https://ui-avatars.com/api/?name=Nimesha+Silva&background=F59E0B&color=fff&size=60"
+                         class="rounded-circle me-3" alt="Student">
+                    <div>
+                        <h6 class="mb-0 fw-bold">Nimesha Silva</h6>
+                        <small class="text-muted">A/L Student - Commerce</small>
+                    </div>
+                </div>
+                <div class="text-warning mb-2">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="text-muted">"Best decision I made for my A/L preparation. The teachers explain concepts clearly and the study materials are excellent."</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="testimonial-card">
+                <div class="d-flex align-items-center mb-3">
+                    <img src="https://ui-avatars.com/api/?name=Rajitha+Fernando&background=10B981&color=fff&size=60"
+                         class="rounded-circle me-3" alt="Student">
+                    <div>
+                        <h6 class="mb-0 fw-bold">Rajitha Fernando</h6>
+                        <small class="text-muted">German Language Student</small>
+                    </div>
+                </div>
+                <div class="text-warning mb-2">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="text-muted">"Learning German here has been an incredible experience. The native teachers make it so much easier to understand and speak fluently."</p>
             </div>
         </div>
     </div>
@@ -119,18 +529,23 @@
                 <p>Advanced Analytics</p>
             </div>
         </div>
-        <p class="mt-4 mb-0">For now, explore our platform via the <a href="/admin/" class="text-white fw-bold">Admin Dashboard</a></p>
+        <p class="mt-4 mb-0">For now, explore our platform via the <a href="/admin/" class="text-white fw-bold text-decoration-underline">Admin Dashboard</a></p>
     </div>
 </div>
 
 <!-- CTA Section -->
 <div class="bg-primary text-white py-5">
     <div class="container text-center">
-        <h2 class="mb-3">Ready to Start Learning?</h2>
-        <p class="lead mb-4">Join hundreds of students achieving their academic goals</p>
-        <a href="{% url 'account_signup' %}" class="btn btn-warning btn-lg">
-            <i class="fas fa-rocket"></i> Enroll Now
-        </a>
+        <h2 class="display-5 fw-bold mb-3">Ready to Start Your Learning Journey?</h2>
+        <p class="lead mb-4">Join hundreds of students achieving their academic goals with us</p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <a href="{% url 'account_signup' %}" class="btn btn-warning btn-lg px-5">
+                <i class="fas fa-rocket"></i> Enroll Now
+            </a>
+            <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg px-5">
+                <i class="fas fa-phone"></i> Contact Us
+            </a>
+        </div>
     </div>
 </div>
 {% endblock %}
