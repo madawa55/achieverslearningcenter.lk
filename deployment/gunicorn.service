@@ -1,0 +1,28 @@
+# Gunicorn systemd service for Achievers Learning Center
+# Place this file at: /etc/systemd/system/gunicorn-achievers.service
+
+[Unit]
+Description=Gunicorn daemon for Achievers Learning Center
+Requires=gunicorn-achievers.socket
+After=network.target postgresql.service
+
+[Service]
+User=achievers
+Group=www-data
+WorkingDirectory=/home/achievers/achieverslearningcenter.lk
+ExecStart=/home/achievers/achieverslearningcenter.lk/venv/bin/gunicorn \
+    --access-logfile /var/log/gunicorn/achievers_access.log \
+    --error-logfile /var/log/gunicorn/achievers_error.log \
+    --workers 3 \
+    --bind unix:/run/gunicorn/achievers.sock \
+    --timeout 120 \
+    --max-requests 1000 \
+    --max-requests-jitter 50 \
+    config.wsgi:application
+
+EnvironmentFile=/home/achievers/achieverslearningcenter.lk/.env
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

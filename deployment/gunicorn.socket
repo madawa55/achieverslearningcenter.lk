@@ -1,0 +1,12 @@
+# Gunicorn socket for Achievers Learning Center
+# Place this file at: /etc/systemd/system/gunicorn-achievers.socket
+
+[Unit]
+Description=Gunicorn socket for Achievers Learning Center
+
+[Socket]
+ListenStream=/run/gunicorn/achievers.sock
+SocketUser=www-data
+
+[Install]
+WantedBy=sockets.target

@@ -76,6 +76,91 @@
     .feature-img:hover {
         transform: scale(1.05);
     }
+
+    /* Subject Cards */
+    .subject-card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.2rem;
+        text-align: center;
+        transition: all 0.3s;
+        border: 2px solid transparent;
+        height: 100%;
+    }
+
+    .subject-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        border-color: var(--primary-color);
+    }
+
+    .subject-card .subject-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 0.8rem;
+        font-size: 1.5rem;
+    }
+
+    .exam-header {
+        border-radius: 15px;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .exam-header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 300px;
+        height: 300px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+    }
+
+    .exam-header::after {
+        content: '';
+        position: absolute;
+        bottom: -30%;
+        left: -10%;
+        width: 200px;
+        height: 200px;
+        background: rgba(255,255,255,0.08);
+        border-radius: 50%;
+    }
+
+    .nav-pills .nav-link {
+        font-weight: 600;
+        padding: 0.8rem 1.5rem;
+        border-radius: 50px;
+        margin: 0 5px;
+        color: #555;
+        transition: all 0.3s;
+    }
+
+    .nav-pills .nav-link.active {
+        background: linear-gradient(135deg, #2563EB, #7c3aed);
+        color: white;
+    }
+
+    .nav-pills .nav-link:hover:not(.active) {
+        background: #f0f0f0;
+    }
+
+    .stream-badge {
+        display: inline-block;
+        padding: 0.4rem 1rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        margin-bottom: 0.5rem;
+    }
 </style>
 {% endblock %}
 
@@ -207,175 +292,499 @@
     </div>
 </div>
 
-<!-- Featured Courses Section -->
+<!-- Our Courses Section with Tabs -->
 <div class="container my-5 py-5" id="courses">
     <div class="text-center mb-5">
-        <h2 class="display-5 fw-bold mb-3">Our Popular Courses</h2>
-        <p class="lead text-muted">Explore our wide range of courses designed for your success</p>
+        <h2 class="display-5 fw-bold mb-3">Our Courses & Subjects</h2>
+        <p class="lead text-muted">Comprehensive education from Grade 5 Scholarship to A/L and beyond</p>
     </div>
 
-    <div class="row g-4">
-        <!-- Course 1 - Mathematics -->
-        <div class="col-lg-4 col-md-6">
-            <div class="card course-card border-0 shadow">
-                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=220&fit=crop"
-                     class="card-img-top" alt="Mathematics Course">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="badge bg-primary">Grades 6-11</span>
-                        <span class="text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </span>
+    <!-- Tabs Navigation -->
+    <ul class="nav nav-pills justify-content-center mb-5 flex-wrap" id="coursesTabs" role="tablist">
+        <li class="nav-item mb-2" role="presentation">
+            <button class="nav-link active" id="grade5-tab" data-bs-toggle="pill" data-bs-target="#grade5" type="button" role="tab">
+                <i class="fas fa-medal me-1"></i> Grade 5 Scholarship
+            </button>
+        </li>
+        <li class="nav-item mb-2" role="presentation">
+            <button class="nav-link" id="ol-tab" data-bs-toggle="pill" data-bs-target="#ol" type="button" role="tab">
+                <i class="fas fa-book me-1"></i> O/L Subjects
+            </button>
+        </li>
+        <li class="nav-item mb-2" role="presentation">
+            <button class="nav-link" id="al-tab" data-bs-toggle="pill" data-bs-target="#al" type="button" role="tab">
+                <i class="fas fa-graduation-cap me-1"></i> A/L Subjects
+            </button>
+        </li>
+        <li class="nav-item mb-2" role="presentation">
+            <button class="nav-link" id="lang-tab" data-bs-toggle="pill" data-bs-target="#lang" type="button" role="tab">
+                <i class="fas fa-globe me-1"></i> Language Courses
+            </button>
+        </li>
+    </ul>
+
+    <!-- Tabs Content -->
+    <div class="tab-content" id="coursesTabContent">
+
+        <!-- ===================== GRADE 5 SCHOLARSHIP ===================== -->
+        <div class="tab-pane fade show active" id="grade5" role="tabpanel">
+            <div class="exam-header text-white" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h3 class="fw-bold mb-2"><i class="fas fa-medal me-2"></i> Grade 5 Scholarship Examination</h3>
+                        <p class="mb-0 fs-5">Prepare your child to excel in the Grade 5 Scholarship Exam with expert guidance and proven methods.</p>
                     </div>
-                    <h5 class="card-title fw-bold">Advanced Mathematics</h5>
-                    <p class="card-text text-muted">Comprehensive math program covering algebra, geometry, and calculus</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="text-primary fw-bold fs-5">LKR 5,000/month</span>
-                        <a href="{% url 'account_signup' %}" class="btn btn-outline-primary">Enroll Now</a>
+                    <div class="col-lg-4 text-end d-none d-lg-block">
+                        <i class="fas fa-award" style="font-size: 5rem; opacity: 0.3;"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-primary bg-opacity-10 text-primary"><i class="fas fa-calculator"></i></div>
+                        <h6 class="fw-bold mb-1">Mathematics</h6>
+                        <small class="text-muted">Number work, Geometry, Problem solving</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-success bg-opacity-10 text-success"><i class="fas fa-om"></i></div>
+                        <h6 class="fw-bold mb-1">Sinhala</h6>
+                        <small class="text-muted">Language, Grammar, Comprehension</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-info bg-opacity-10 text-info"><i class="fas fa-language"></i></div>
+                        <h6 class="fw-bold mb-1">English</h6>
+                        <small class="text-muted">Reading, Writing, Grammar</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-warning bg-opacity-10 text-warning"><i class="fas fa-leaf"></i></div>
+                        <h6 class="fw-bold mb-1">Environment</h6>
+                        <small class="text-muted">Nature, Society, Health</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-danger bg-opacity-10 text-danger"><i class="fas fa-dharmachakra"></i></div>
+                        <h6 class="fw-bold mb-1">Buddhism</h6>
+                        <small class="text-muted">Buddhist teachings & values</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-secondary bg-opacity-10 text-secondary"><i class="fas fa-brain"></i></div>
+                        <h6 class="fw-bold mb-1">Intelligence</h6>
+                        <small class="text-muted">Logical reasoning, IQ skills</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-primary bg-opacity-10 text-primary"><i class="fas fa-puzzle-piece"></i></div>
+                        <h6 class="fw-bold mb-1">General Knowledge</h6>
+                        <small class="text-muted">Current affairs, World facts</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-success bg-opacity-10 text-success"><i class="fas fa-clipboard-check"></i></div>
+                        <h6 class="fw-bold mb-1">Model Papers</h6>
+                        <small class="text-muted">Past papers & mock exams</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="tel:0716716389" class="btn btn-warning btn-lg px-5 me-2">
+                    <i class="fas fa-phone me-1"></i> Call to Enroll
+                </a>
+                <a href="{% url 'account_signup' %}" class="btn btn-outline-primary btn-lg px-5">
+                    <i class="fas fa-user-plus me-1"></i> Register Online
+                </a>
+            </div>
+        </div>
+
+        <!-- ===================== O/L SUBJECTS ===================== -->
+        <div class="tab-pane fade" id="ol" role="tabpanel">
+            <div class="exam-header text-white" style="background: linear-gradient(135deg, #2563EB 0%, #1e40af 100%);">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h3 class="fw-bold mb-2"><i class="fas fa-book me-2"></i> G.C.E. Ordinary Level (O/L)</h3>
+                        <p class="mb-0 fs-5">Complete O/L preparation for Grades 10 & 11 with expert teachers and proven exam strategies.</p>
+                    </div>
+                    <div class="col-lg-4 text-end d-none d-lg-block">
+                        <i class="fas fa-scroll" style="font-size: 5rem; opacity: 0.3;"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compulsory Subjects -->
+            <h5 class="fw-bold mb-3 mt-2"><span class="stream-badge bg-primary text-white">Compulsory Subjects</span></h5>
+            <div class="row g-3 mb-4">
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-primary bg-opacity-10 text-primary"><i class="fas fa-calculator"></i></div>
+                        <h6 class="fw-bold mb-1">Mathematics</h6>
+                        <small class="text-muted">Algebra, Geometry, Statistics</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-success bg-opacity-10 text-success"><i class="fas fa-flask"></i></div>
+                        <h6 class="fw-bold mb-1">Science</h6>
+                        <small class="text-muted">Physics, Chemistry, Biology</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-info bg-opacity-10 text-info"><i class="fas fa-language"></i></div>
+                        <h6 class="fw-bold mb-1">English</h6>
+                        <small class="text-muted">Grammar, Comprehension, Writing</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-warning bg-opacity-10 text-warning"><i class="fas fa-om"></i></div>
+                        <h6 class="fw-bold mb-1">Sinhala / Tamil</h6>
+                        <small class="text-muted">First language studies</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-danger bg-opacity-10 text-danger"><i class="fas fa-dharmachakra"></i></div>
+                        <h6 class="fw-bold mb-1">Buddhism / Religion</h6>
+                        <small class="text-muted">Religious studies</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-secondary bg-opacity-10 text-secondary"><i class="fas fa-landmark"></i></div>
+                        <h6 class="fw-bold mb-1">History</h6>
+                        <small class="text-muted">Sri Lankan & World history</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Optional Subjects -->
+            <h5 class="fw-bold mb-3"><span class="stream-badge bg-success text-white">Optional / Basket Subjects</span></h5>
+            <div class="row g-3 mb-4">
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-primary bg-opacity-10 text-primary"><i class="fas fa-globe-asia"></i></div>
+                        <h6 class="fw-bold mb-1">Geography</h6>
+                        <small class="text-muted">Physical & human geography</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-info bg-opacity-10 text-info"><i class="fas fa-gavel"></i></div>
+                        <h6 class="fw-bold mb-1">Civic Education</h6>
+                        <small class="text-muted">Citizenship & governance</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-warning bg-opacity-10 text-warning"><i class="fas fa-coins"></i></div>
+                        <h6 class="fw-bold mb-1">Commerce</h6>
+                        <small class="text-muted">Business & economics basics</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-success bg-opacity-10 text-success"><i class="fas fa-heartbeat"></i></div>
+                        <h6 class="fw-bold mb-1">Health & P.E.</h6>
+                        <small class="text-muted">Health science & physical education</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-danger bg-opacity-10 text-danger"><i class="fas fa-laptop-code"></i></div>
+                        <h6 class="fw-bold mb-1">ICT</h6>
+                        <small class="text-muted">Information & Communication Technology</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-secondary bg-opacity-10 text-secondary"><i class="fas fa-palette"></i></div>
+                        <h6 class="fw-bold mb-1">Art / Dancing</h6>
+                        <small class="text-muted">Visual arts & performing arts</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-primary bg-opacity-10 text-primary"><i class="fas fa-book-reader"></i></div>
+                        <h6 class="fw-bold mb-1">Literature</h6>
+                        <small class="text-muted">Sinhala / English / Tamil literature</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-warning bg-opacity-10 text-warning"><i class="fas fa-drafting-compass"></i></div>
+                        <h6 class="fw-bold mb-1">Western Music</h6>
+                        <small class="text-muted">Music theory & performance</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="tel:0716716389" class="btn btn-primary btn-lg px-5 me-2">
+                    <i class="fas fa-phone me-1"></i> Call to Enroll
+                </a>
+                <a href="{% url 'account_signup' %}" class="btn btn-outline-primary btn-lg px-5">
+                    <i class="fas fa-user-plus me-1"></i> Register Online
+                </a>
+            </div>
+        </div>
+
+        <!-- ===================== A/L SUBJECTS ===================== -->
+        <div class="tab-pane fade" id="al" role="tabpanel">
+            <div class="exam-header text-white" style="background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h3 class="fw-bold mb-2"><i class="fas fa-graduation-cap me-2"></i> G.C.E. Advanced Level (A/L)</h3>
+                        <p class="mb-0 fs-5">Expert A/L preparation for university entrance. Choose your stream and excel in every subject.</p>
+                    </div>
+                    <div class="col-lg-4 text-end d-none d-lg-block">
+                        <i class="fas fa-university" style="font-size: 5rem; opacity: 0.3;"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Science Stream -->
+            <h5 class="fw-bold mb-3 mt-2"><span class="stream-badge bg-danger text-white"><i class="fas fa-atom me-1"></i> Science Stream</span></h5>
+            <div class="row g-3 mb-4">
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-danger bg-opacity-10 text-danger"><i class="fas fa-superscript"></i></div>
+                        <h6 class="fw-bold mb-1">Combined Mathematics</h6>
+                        <small class="text-muted">Pure Maths & Applied Maths</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-info bg-opacity-10 text-info"><i class="fas fa-atom"></i></div>
+                        <h6 class="fw-bold mb-1">Physics</h6>
+                        <small class="text-muted">Mechanics, Waves, Electricity</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-success bg-opacity-10 text-success"><i class="fas fa-vial"></i></div>
+                        <h6 class="fw-bold mb-1">Chemistry</h6>
+                        <small class="text-muted">Organic, Inorganic, Physical</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-primary bg-opacity-10 text-primary"><i class="fas fa-dna"></i></div>
+                        <h6 class="fw-bold mb-1">Biology</h6>
+                        <small class="text-muted">Botany, Zoology, Genetics</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commerce Stream -->
+            <h5 class="fw-bold mb-3"><span class="stream-badge bg-warning text-dark"><i class="fas fa-chart-bar me-1"></i> Commerce Stream</span></h5>
+            <div class="row g-3 mb-4">
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-warning bg-opacity-10 text-warning"><i class="fas fa-file-invoice-dollar"></i></div>
+                        <h6 class="fw-bold mb-1">Accounting</h6>
+                        <small class="text-muted">Financial & Management Accounting</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-success bg-opacity-10 text-success"><i class="fas fa-chart-line"></i></div>
+                        <h6 class="fw-bold mb-1">Economics</h6>
+                        <small class="text-muted">Micro & Macro Economics</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-primary bg-opacity-10 text-primary"><i class="fas fa-briefcase"></i></div>
+                        <h6 class="fw-bold mb-1">Business Studies</h6>
+                        <small class="text-muted">Management & Marketing</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-info bg-opacity-10 text-info"><i class="fas fa-balance-scale"></i></div>
+                        <h6 class="fw-bold mb-1">Business Statistics</h6>
+                        <small class="text-muted">Data analysis & probability</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arts Stream -->
+            <h5 class="fw-bold mb-3"><span class="stream-badge bg-info text-white"><i class="fas fa-feather-alt me-1"></i> Arts Stream</span></h5>
+            <div class="row g-3 mb-4">
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-info bg-opacity-10 text-info"><i class="fas fa-globe-asia"></i></div>
+                        <h6 class="fw-bold mb-1">Geography</h6>
+                        <small class="text-muted">Advanced physical & human geo</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-secondary bg-opacity-10 text-secondary"><i class="fas fa-landmark"></i></div>
+                        <h6 class="fw-bold mb-1">History</h6>
+                        <small class="text-muted">Sri Lankan & World history</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-danger bg-opacity-10 text-danger"><i class="fas fa-university"></i></div>
+                        <h6 class="fw-bold mb-1">Political Science</h6>
+                        <small class="text-muted">Government & political systems</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-primary bg-opacity-10 text-primary"><i class="fas fa-book-reader"></i></div>
+                        <h6 class="fw-bold mb-1">Sinhala / Tamil</h6>
+                        <small class="text-muted">Advanced language studies</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technology Stream -->
+            <h5 class="fw-bold mb-3"><span class="stream-badge bg-dark text-white"><i class="fas fa-microchip me-1"></i> Technology Stream</span></h5>
+            <div class="row g-3 mb-4">
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-dark bg-opacity-10 text-dark"><i class="fas fa-cogs"></i></div>
+                        <h6 class="fw-bold mb-1">Engineering Technology</h6>
+                        <small class="text-muted">Mechanical & Civil Engineering</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-primary bg-opacity-10 text-primary"><i class="fas fa-microscope"></i></div>
+                        <h6 class="fw-bold mb-1">Science for Technology</h6>
+                        <small class="text-muted">Applied science concepts</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-success bg-opacity-10 text-success"><i class="fas fa-laptop-code"></i></div>
+                        <h6 class="fw-bold mb-1">ICT</h6>
+                        <small class="text-muted">Programming & Networking</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-warning bg-opacity-10 text-warning"><i class="fas fa-tractor"></i></div>
+                        <h6 class="fw-bold mb-1">Bio Systems Technology</h6>
+                        <small class="text-muted">Agriculture & bio tech</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Common Subject -->
+            <h5 class="fw-bold mb-3"><span class="stream-badge bg-secondary text-white"><i class="fas fa-star me-1"></i> Common Subject (All Streams)</span></h5>
+            <div class="row g-3 mb-4">
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-secondary bg-opacity-10 text-secondary"><i class="fas fa-lightbulb"></i></div>
+                        <h6 class="fw-bold mb-1">General English</h6>
+                        <small class="text-muted">Compulsory for all streams</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="subject-card shadow-sm">
+                        <div class="subject-icon bg-primary bg-opacity-10 text-primary"><i class="fas fa-newspaper"></i></div>
+                        <h6 class="fw-bold mb-1">General Knowledge</h6>
+                        <small class="text-muted">Common general paper</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="tel:0716716389" class="btn btn-primary btn-lg px-5 me-2" style="background: linear-gradient(135deg, #7c3aed, #5b21b6); border: none;">
+                    <i class="fas fa-phone me-1"></i> Call to Enroll
+                </a>
+                <a href="{% url 'account_signup' %}" class="btn btn-outline-primary btn-lg px-5">
+                    <i class="fas fa-user-plus me-1"></i> Register Online
+                </a>
+            </div>
+        </div>
+
+        <!-- ===================== LANGUAGE COURSES ===================== -->
+        <div class="tab-pane fade" id="lang" role="tabpanel">
+            <div class="exam-header text-white" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h3 class="fw-bold mb-2"><i class="fas fa-globe me-2"></i> Foreign Language Courses</h3>
+                        <p class="mb-0 fs-5">Master German & Japanese with professional native-speaking instructors and internationally recognized certifications.</p>
+                    </div>
+                    <div class="col-lg-4 text-end d-none d-lg-block">
+                        <i class="fas fa-language" style="font-size: 5rem; opacity: 0.3;"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- German -->
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="https://images.unsplash.com/photo-1527866959252-deab85ef7d1b?w=600&h=250&fit=crop" class="card-img-top" alt="German Language" style="height:220px; object-fit:cover;">
+                        <div class="card-body">
+                            <h4 class="fw-bold"><i class="me-2">&#127465;&#127466;</i> German Language</h4>
+                            <p class="text-muted">From beginner to fluent - internationally certified courses</p>
+                            <div class="row g-2 mb-3">
+                                <div class="col-4"><span class="badge bg-success w-100 py-2">A1</span></div>
+                                <div class="col-4"><span class="badge bg-success w-100 py-2">A2</span></div>
+                                <div class="col-4"><span class="badge bg-info w-100 py-2">B1</span></div>
+                                <div class="col-4"><span class="badge bg-info w-100 py-2">B2</span></div>
+                                <div class="col-4"><span class="badge bg-primary w-100 py-2">C1</span></div>
+                                <div class="col-4"><span class="badge bg-primary w-100 py-2">C2</span></div>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Goethe exam preparation</li>
+                                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Conversational German</li>
+                                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>German for immigration</li>
+                                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Business German</li>
+                            </ul>
+                            <a href="tel:0716716389" class="btn btn-success w-100"><i class="fas fa-phone me-1"></i> Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Japanese -->
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?w=600&h=250&fit=crop" class="card-img-top" alt="Japanese Language" style="height:220px; object-fit:cover;">
+                        <div class="card-body">
+                            <h4 class="fw-bold"><i class="me-2">&#127471;&#127477;</i> Japanese Language</h4>
+                            <p class="text-muted">JLPT preparation with experienced Japanese-speaking teachers</p>
+                            <div class="row g-2 mb-3">
+                                <div class="col-4"><span class="badge bg-success w-100 py-2">N5</span></div>
+                                <div class="col-4"><span class="badge bg-success w-100 py-2">N4</span></div>
+                                <div class="col-4"><span class="badge bg-info w-100 py-2">N3</span></div>
+                                <div class="col-4"><span class="badge bg-info w-100 py-2">N2</span></div>
+                                <div class="col-4"><span class="badge bg-primary w-100 py-2">N1</span></div>
+                                <div class="col-4"><span class="badge bg-dark w-100 py-2">NAT</span></div>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>JLPT exam preparation</li>
+                                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Hiragana, Katakana, Kanji</li>
+                                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Japanese for employment</li>
+                                <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Spoken Japanese</li>
+                            </ul>
+                            <a href="tel:0716716389" class="btn btn-danger w-100"><i class="fas fa-phone me-1"></i> Enroll Now</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Course 2 - German Language -->
-        <div class="col-lg-4 col-md-6">
-            <div class="card course-card border-0 shadow">
-                <img src="https://images.unsplash.com/photo-1527866959252-deab85ef7d1b?w=400&h=220&fit=crop"
-                     class="card-img-top" alt="German Language Course">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="badge bg-success">All Levels</span>
-                        <span class="text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </span>
-                    </div>
-                    <h5 class="card-title fw-bold">German Language A1-C2</h5>
-                    <p class="card-text text-muted">Learn German from beginner to advanced with native speakers</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="text-primary fw-bold fs-5">LKR 8,000/month</span>
-                        <a href="{% url 'account_signup' %}" class="btn btn-outline-primary">Enroll Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Course 3 - Japanese Language -->
-        <div class="col-lg-4 col-md-6">
-            <div class="card course-card border-0 shadow">
-                <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?w=400&h=220&fit=crop"
-                     class="card-img-top" alt="Japanese Language Course">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="badge bg-danger">Beginner-Advanced</span>
-                        <span class="text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </span>
-                    </div>
-                    <h5 class="card-title fw-bold">Japanese Language N5-N1</h5>
-                    <p class="card-text text-muted">Master Japanese language with JLPT exam preparation</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="text-primary fw-bold fs-5">LKR 8,500/month</span>
-                        <a href="{% url 'account_signup' %}" class="btn btn-outline-primary">Enroll Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Course 4 - Science -->
-        <div class="col-lg-4 col-md-6">
-            <div class="card course-card border-0 shadow">
-                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&h=220&fit=crop"
-                     class="card-img-top" alt="Science Course">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="badge bg-info">Grades 6-11</span>
-                        <span class="text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </span>
-                    </div>
-                    <h5 class="card-title fw-bold">Combined Science</h5>
-                    <p class="card-text text-muted">Physics, Chemistry, and Biology with practical demonstrations</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="text-primary fw-bold fs-5">LKR 6,000/month</span>
-                        <a href="{% url 'account_signup' %}" class="btn btn-outline-primary">Enroll Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Course 5 - English -->
-        <div class="col-lg-4 col-md-6">
-            <div class="card course-card border-0 shadow">
-                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=220&fit=crop"
-                     class="card-img-top" alt="English Course">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="badge bg-warning">All Grades</span>
-                        <span class="text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </span>
-                    </div>
-                    <h5 class="card-title fw-bold">English Language & Literature</h5>
-                    <p class="card-text text-muted">Improve your English speaking, writing, and comprehension skills</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="text-primary fw-bold fs-5">LKR 4,500/month</span>
-                        <a href="{% url 'account_signup' %}" class="btn btn-outline-primary">Enroll Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Course 6 - IT -->
-        <div class="col-lg-4 col-md-6">
-            <div class="card course-card border-0 shadow">
-                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=220&fit=crop"
-                     class="card-img-top" alt="IT Course">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="badge bg-dark">Grades 10-13</span>
-                        <span class="text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </span>
-                    </div>
-                    <h5 class="card-title fw-bold">Information Technology</h5>
-                    <p class="card-text text-muted">Learn programming, web development, and computer science</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="text-primary fw-bold fs-5">LKR 7,000/month</span>
-                        <a href="{% url 'account_signup' %}" class="btn btn-outline-primary">Enroll Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="text-center mt-5">
-        <a href="{% url 'account_signup' %}" class="btn btn-primary btn-lg px-5">
-            <i class="fas fa-th-large"></i> View All Courses
-        </a>
     </div>
 </div>
 
