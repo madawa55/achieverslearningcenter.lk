@@ -110,12 +110,24 @@ echo -e "${GREEN}[4/10] Setting up application directory...${NC}"
 
 mkdir -p ${APP_DIR}
 
-# If project files exist locally, you need to copy/upload them
-# For now, we set correct ownership
+# Check if project files exist - stop if not uploaded yet
 if [ ! -f "${APP_DIR}/manage.py" ]; then
-    echo -e "${YELLOW}WARNING: Project files not found in ${APP_DIR}${NC}"
-    echo -e "${YELLOW}Please upload your project files to ${APP_DIR} before continuing.${NC}"
-    echo -e "${YELLOW}You can use: scp -r ./* ${APP_USER}@your-server:${APP_DIR}/${NC}"
+    echo -e "${RED}=============================================${NC}"
+    echo -e "${RED}  ERROR: Project files not found!            ${NC}"
+    echo -e "${RED}=============================================${NC}"
+    echo ""
+    echo -e "${YELLOW}Project files are missing in ${APP_DIR}${NC}"
+    echo -e "${YELLOW}Please upload your project files FIRST, then re-run this script.${NC}"
+    echo ""
+    echo -e "${YELLOW}From your local Windows machine, run:${NC}"
+    echo -e "  scp -r d:/achieverslearningcenter.lk/achieverslearningcenter.lk/* root@YOUR_SERVER_IP:${APP_DIR}/"
+    echo ""
+    echo -e "${YELLOW}Or use FileZilla/WinSCP to upload files to: ${APP_DIR}/${NC}"
+    echo ""
+    echo -e "${YELLOW}Required files: manage.py, config/, apps/, templates/, requirements-prod.txt${NC}"
+    echo ""
+    echo -e "${YELLOW}After uploading, run this script again: sudo ./deploy.sh${NC}"
+    exit 1
 fi
 
 chown -R ${APP_USER}:www-data ${APP_DIR}
