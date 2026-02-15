@@ -2,12 +2,53 @@
 
 {% block title %}{{ title }}{% endblock %}
 
+{% block extra_css %}
+<style>
+    .contact-hero {
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(124, 58, 237, 0.85)), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&h=400&fit=crop');
+        background-size: cover;
+        background-position: center;
+    }
+    .contact-card {
+        transition: all 0.3s;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+    .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    .quick-action-btn {
+        transition: all 0.3s;
+        border-radius: 12px;
+        padding: 1rem;
+    }
+    .quick-action-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .quick-action-btn img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<!-- Page Header -->
-<div class="bg-primary text-white py-5">
-    <div class="container">
-        <h1 class="display-4 fw-bold">Contact Us</h1>
-        <p class="lead">We'd love to hear from you! Get in touch with us today.</p>
+<!-- Page Header with Background Image -->
+<div class="contact-hero text-white py-5">
+    <div class="container py-4">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold">Contact Us</h1>
+                <p class="lead fs-4">We'd love to hear from you! Get in touch with us today.</p>
+            </div>
+            <div class="col-lg-4 text-end d-none d-lg-block">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=300&h=200&fit=crop" class="img-fluid rounded-3 shadow" alt="Team" style="opacity: 0.8;">
+            </div>
+        </div>
     </div>
 </div>
 
@@ -18,54 +59,76 @@
             <h2 class="fw-bold mb-4">Get in Touch</h2>
             <p class="lead text-muted mb-4">Have questions about our courses? Want to enroll? We're here to help!</p>
 
-            <div class="mb-4 p-4 bg-light rounded-3">
-                <h5 class="fw-bold mb-3">
-                    <i class="fas fa-phone text-primary me-2"></i> Call Us
-                </h5>
-                <p class="mb-2">
-                    <a href="tel:0716716389" class="text-decoration-none fs-5">
-                        <i class="fas fa-mobile-alt text-success me-2"></i>071 671 6389
-                    </a>
-                </p>
-                <p class="mb-0">
-                    <a href="tel:0759018686" class="text-decoration-none fs-5">
-                        <i class="fas fa-mobile-alt text-success me-2"></i>075 901 8686
-                    </a>
-                </p>
-                <small class="text-muted">Available: Mon-Sat, 8:00 AM - 8:00 PM</small>
+            <div class="card contact-card mb-4 border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center">
+                        <img src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=80&h=80&fit=crop" class="rounded-circle me-3" width="70" height="70" alt="Call">
+                        <div>
+                            <h5 class="fw-bold mb-2"><i class="fas fa-phone text-primary me-2"></i> Call Us</h5>
+                            <p class="mb-1">
+                                <a href="tel:0716716389" class="text-decoration-none fs-5">
+                                    <i class="fas fa-mobile-alt text-success me-2"></i>071 671 6389
+                                </a>
+                            </p>
+                            <p class="mb-0">
+                                <a href="tel:0759018686" class="text-decoration-none fs-5">
+                                    <i class="fas fa-mobile-alt text-success me-2"></i>075 901 8686
+                                </a>
+                            </p>
+                            <small class="text-muted">Available: Mon-Sat, 8:00 AM - 8:00 PM</small>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="mb-4 p-4 bg-light rounded-3">
-                <h5 class="fw-bold mb-3">
-                    <i class="fas fa-envelope text-primary me-2"></i> Email Us
-                </h5>
-                <p class="mb-0">
-                    <a href="mailto:edu@makorholdings.com" class="text-decoration-none fs-5">
-                        <i class="fas fa-paper-plane text-info me-2"></i>edu@makorholdings.com
-                    </a>
-                </p>
-                <small class="text-muted d-block mt-2">We typically respond within 24 hours</small>
+            <div class="card contact-card mb-4 border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center">
+                        <img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=80&h=80&fit=crop" class="rounded-circle me-3" width="70" height="70" alt="Email">
+                        <div>
+                            <h5 class="fw-bold mb-2"><i class="fas fa-envelope text-primary me-2"></i> Email Us</h5>
+                            <p class="mb-0">
+                                <a href="mailto:edu@makorholdings.com" class="text-decoration-none fs-5">
+                                    <i class="fas fa-paper-plane text-info me-2"></i>edu@makorholdings.com
+                                </a>
+                            </p>
+                            <small class="text-muted d-block mt-2">We typically respond within 24 hours</small>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="mb-4 p-4 bg-light rounded-3">
-                <h5 class="fw-bold mb-3">
-                    <i class="fas fa-map-marker-alt text-primary me-2"></i> Visit Us
-                </h5>
-                <p class="mb-2">
-                    <strong>Main Branch:</strong><br>
-                    Colombo, Sri Lanka
-                </p>
-                <small class="text-muted">Monday - Friday: 8:00 AM - 8:00 PM<br>Saturday: 9:00 AM - 5:00 PM<br>Sunday: Closed</small>
+            <div class="card contact-card mb-4 border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center">
+                        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=80&h=80&fit=crop" class="rounded-circle me-3" width="70" height="70" alt="Visit">
+                        <div>
+                            <h5 class="fw-bold mb-2"><i class="fas fa-map-marker-alt text-primary me-2"></i> Visit Us</h5>
+                            <p class="mb-2">
+                                <strong>Main Branch:</strong><br>
+                                Colombo, Sri Lanka
+                            </p>
+                            <small class="text-muted">Monday - Friday: 8:00 AM - 8:00 PM<br>Saturday: 9:00 AM - 5:00 PM<br>Sunday: Closed</small>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="mb-4 p-4 bg-primary text-white rounded-3">
-                <h5 class="fw-bold mb-3">
-                    <i class="fas fa-user-shield me-2"></i> Admin Access
-                </h5>
-                <p class="mb-3">Are you an administrator or teacher?</p>
-                <a href="/admin/" class="btn btn-warning btn-lg">
-                    <i class="fas fa-lock me-2"></i>Access Admin Portal
-                </a>
+            <div class="card contact-card mb-4 border-0 shadow-sm overflow-hidden">
+                <div class="row g-0">
+                    <div class="col-4">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=250&fit=crop" class="img-fluid h-100" style="object-fit: cover;" alt="Admin">
+                    </div>
+                    <div class="col-8">
+                        <div class="card-body bg-primary text-white p-4">
+                            <h5 class="fw-bold mb-2"><i class="fas fa-user-shield me-2"></i> Admin Access</h5>
+                            <p class="mb-3 small">Are you an administrator or teacher?</p>
+                            <a href="/admin/" class="btn btn-warning">
+                                <i class="fas fa-lock me-2"></i>Access Admin Portal
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -73,45 +136,64 @@
         <div class="col-lg-6">
             <h2 class="fw-bold mb-4">Send Us a Message</h2>
 
-            <div class="alert alert-info mb-4">
-                <i class="fas fa-info-circle me-2"></i>
-                <strong>Contact Form Coming Soon!</strong><br>
-                For now, please reach out directly via phone or email. We're always happy to hear from you!
+            <div class="alert alert-info mb-4 d-flex align-items-center">
+                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=50&h=50&fit=crop" class="rounded-circle me-3" width="50" height="50" alt="Info">
+                <div>
+                    <strong>Contact Form Coming Soon!</strong><br>
+                    <small>For now, please reach out directly via phone or email.</small>
+                </div>
             </div>
 
             <!-- Quick Actions -->
-            <div class="card shadow-sm mb-4">
-                <div class="card-body">
+            <div class="card shadow-sm mb-4 border-0">
+                <div class="card-body p-4">
                     <h5 class="card-title fw-bold mb-3">
                         <i class="fas fa-bolt text-warning me-2"></i> Quick Actions
                     </h5>
                     <div class="d-grid gap-2">
-                        <a href="tel:0716716389" class="btn btn-outline-success btn-lg">
-                            <i class="fas fa-phone me-2"></i> Call Now: 071 671 6389
+                        <a href="tel:0716716389" class="btn btn-outline-success btn-lg quick-action-btn d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=40&h=40&fit=crop" class="me-3" alt="Call">
+                            <div class="text-start">
+                                <strong>Call Now: 071 671 6389</strong><br>
+                                <small class="text-muted">Speak with our team</small>
+                            </div>
                         </a>
-                        <a href="tel:0759018686" class="btn btn-outline-success btn-lg">
-                            <i class="fas fa-phone me-2"></i> Call Now: 075 901 8686
+                        <a href="tel:0759018686" class="btn btn-outline-success btn-lg quick-action-btn d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=40&h=40&fit=crop&crop=face" class="me-3" alt="Call">
+                            <div class="text-start">
+                                <strong>Call Now: 075 901 8686</strong><br>
+                                <small class="text-muted">Alternative number</small>
+                            </div>
                         </a>
-                        <a href="mailto:edu@makorholdings.com" class="btn btn-outline-primary btn-lg">
-                            <i class="fas fa-envelope me-2"></i> Send Email
+                        <a href="mailto:edu@makorholdings.com" class="btn btn-outline-primary btn-lg quick-action-btn d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=40&h=40&fit=crop" class="me-3" alt="Email">
+                            <div class="text-start">
+                                <strong>Send Email</strong><br>
+                                <small class="text-muted">edu@makorholdings.com</small>
+                            </div>
                         </a>
-                        <a href="https://wa.me/94716716389" target="_blank" class="btn btn-outline-success btn-lg">
-                            <i class="fab fa-whatsapp me-2"></i> WhatsApp Us
+                        <a href="https://wa.me/94716716389" target="_blank" class="btn btn-outline-success btn-lg quick-action-btn d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=40&h=40&fit=crop" class="me-3" alt="WhatsApp">
+                            <div class="text-start">
+                                <strong>WhatsApp Us</strong><br>
+                                <small class="text-muted">Chat with us instantly</small>
+                            </div>
                         </a>
                     </div>
                 </div>
             </div>
 
             <!-- FAQ Section -->
-            <div class="card shadow-sm">
-                <div class="card-body">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
                     <h5 class="card-title fw-bold mb-3">
                         <i class="fas fa-question-circle text-info me-2"></i> Frequently Asked Questions
                     </h5>
                     <div class="accordion" id="faqAccordion">
-                        <div class="accordion-item">
+                        <div class="accordion-item border-0 mb-2">
                             <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                <button class="accordion-button rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=30&h=30&fit=crop" class="rounded-circle me-2" width="30" height="30" alt="">
                                     How do I enroll in a course?
                                 </button>
                             </h2>
@@ -121,9 +203,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
+                        <div class="accordion-item border-0 mb-2">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=30&h=30&fit=crop" class="rounded-circle me-2" width="30" height="30" alt="">
                                     What are the payment methods?
                                 </button>
                             </h2>
@@ -133,15 +216,29 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
+                        <div class="accordion-item border-0 mb-2">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=30&h=30&fit=crop" class="rounded-circle me-2" width="30" height="30" alt="">
                                     Do you offer trial classes?
                                 </button>
                             </h2>
                             <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
                                     Yes! We offer free trial classes for new students. Contact us to schedule your trial.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    <img src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=30&h=30&fit=crop" class="rounded-circle me-2" width="30" height="30" alt="">
+                                    Are online classes available?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes! We offer live online classes via Zoom, recorded lessons, and hybrid options for maximum flexibility.
                                 </div>
                             </div>
                         </div>
@@ -152,22 +249,31 @@
     </div>
 </div>
 
-<!-- Map Section (Placeholder) -->
+<!-- Map Section -->
 <div class="bg-light py-5">
     <div class="container">
-        <h3 class="text-center fw-bold mb-4">Find Us on the Map</h3>
-        <div class="ratio ratio-21x9 rounded-3 shadow">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.58710222968!2d79.77380469453125!3d6.927078899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae253d10f7a7003%3A0x320b2e4d32d3838d!2sColombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2sus!4v1707648000000!5m2!1sen!2sus"
-                style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+        <div class="row align-items-center g-4">
+            <div class="col-lg-4">
+                <h3 class="fw-bold mb-3">Find Us on the Map</h3>
+                <p class="text-muted">Visit our learning center in Colombo. We are conveniently located and easily accessible.</p>
+                <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&h=250&fit=crop" class="img-fluid rounded-3 shadow mb-3" alt="Our Center">
+                <p class="small text-muted"><i class="fas fa-map-pin text-danger me-1"></i> Colombo, Sri Lanka</p>
+            </div>
+            <div class="col-lg-8">
+                <div class="ratio ratio-16x9 rounded-3 shadow">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.58710222968!2d79.77380469453125!3d6.927078899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae253d10f7a7003%3A0x320b2e4d32d3838d!2sColombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2sus!4v1707648000000!5m2!1sen!2sus"
+                        style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <!-- CTA Section -->
 <div class="container my-5 py-5">
-    <div class="bg-primary text-white rounded-3 p-5 text-center">
+    <div class="rounded-3 p-5 text-center text-white" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.95), rgba(124, 58, 237, 0.9)), url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1200&h=400&fit=crop'); background-size: cover; background-position: center;">
         <h2 class="display-5 fw-bold mb-3">Still Have Questions?</h2>
         <p class="lead mb-4">Our friendly team is ready to help you!</p>
         <div class="d-flex gap-3 justify-content-center flex-wrap">

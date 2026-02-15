@@ -2,12 +2,73 @@
 
 {% block title %}{{ title }}{% endblock %}
 
+{% block extra_css %}
+<style>
+    .about-hero {
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(124, 58, 237, 0.85)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&h=400&fit=crop');
+        background-size: cover;
+        background-position: center;
+    }
+    .value-card {
+        transition: all 0.3s;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+    .value-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+    .team-img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #e5e7eb;
+    }
+    .timeline-item {
+        position: relative;
+        padding-left: 40px;
+        margin-bottom: 2rem;
+    }
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: 12px;
+        top: 30px;
+        bottom: -2rem;
+        width: 2px;
+        background: #e5e7eb;
+    }
+    .timeline-item:last-child::before { display: none; }
+    .timeline-dot {
+        position: absolute;
+        left: 0;
+        top: 5px;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .timeline-dot i { color: white; font-size: 0.7rem; }
+</style>
+{% endblock %}
+
 {% block content %}
-<!-- Page Header -->
-<div class="bg-primary text-white py-5">
-    <div class="container">
-        <h1 class="display-4 fw-bold">About Achievers Learning Center</h1>
-        <p class="lead">Empowering Students to Achieve Excellence Since 2020</p>
+<!-- Page Header with Background Image -->
+<div class="about-hero text-white py-5">
+    <div class="container py-4">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold">About Achievers Learning Center</h1>
+                <p class="lead fs-4">Empowering Students to Achieve Excellence Since 2020</p>
+            </div>
+            <div class="col-lg-4 text-end d-none d-lg-block">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=300&h=200&fit=crop" class="img-fluid rounded-3 shadow" alt="Students" style="opacity: 0.8;">
+            </div>
+        </div>
     </div>
 </div>
 
@@ -15,8 +76,12 @@
     <!-- Mission & Vision -->
     <div class="row align-items-center mb-5">
         <div class="col-lg-6 mb-4 mb-lg-0">
-            <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&h=600&fit=crop"
-                 alt="Our Mission" class="img-fluid rounded-3 shadow">
+            <div class="position-relative">
+                <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&h=600&fit=crop" alt="Our Mission" class="img-fluid rounded-3 shadow">
+                <div class="position-absolute top-0 end-0 bg-primary text-white p-3 rounded-3 shadow m-3">
+                    <i class="fas fa-bullseye fa-2x"></i>
+                </div>
+            </div>
         </div>
         <div class="col-lg-6">
             <h2 class="fw-bold mb-4">
@@ -29,8 +94,12 @@
 
     <div class="row align-items-center mb-5 flex-lg-row-reverse">
         <div class="col-lg-6 mb-4 mb-lg-0">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop"
-                 alt="Our Vision" class="img-fluid rounded-3 shadow">
+            <div class="position-relative">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop" alt="Our Vision" class="img-fluid rounded-3 shadow">
+                <div class="position-absolute top-0 start-0 bg-warning text-white p-3 rounded-3 shadow m-3">
+                    <i class="fas fa-eye fa-2x"></i>
+                </div>
+            </div>
         </div>
         <div class="col-lg-6">
             <h2 class="fw-bold mb-4">
@@ -41,70 +110,115 @@
         </div>
     </div>
 
+    <!-- Our Journey Timeline -->
+    <div class="mb-5">
+        <h2 class="text-center fw-bold mb-5">Our Journey</h2>
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fas fa-flag"></i></div>
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=80&h=80&fit=crop" class="rounded me-3" width="80" height="80" alt="Founded">
+                            <div>
+                                <h6 class="fw-bold mb-1">2020 - Founded</h6>
+                                <p class="text-muted small mb-0">Started with 5 teachers and 50 students in Colombo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fas fa-globe"></i></div>
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=80&h=80&fit=crop" class="rounded me-3" width="80" height="80" alt="Online">
+                            <div>
+                                <h6 class="fw-bold mb-1">2021 - Online Classes Launched</h6>
+                                <p class="text-muted small mb-0">Expanded to online learning reaching students nationwide</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fas fa-language"></i></div>
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=80&h=80&fit=crop" class="rounded me-3" width="80" height="80" alt="Languages">
+                            <div>
+                                <h6 class="fw-bold mb-1">2022 - Language Courses Added</h6>
+                                <p class="text-muted small mb-0">Introduced German and Japanese language programs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fas fa-trophy"></i></div>
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=80&h=80&fit=crop" class="rounded me-3" width="80" height="80" alt="500">
+                            <div>
+                                <h6 class="fw-bold mb-1">2024 - 500+ Students</h6>
+                                <p class="text-muted small mb-0">Reached 500+ students with 95% examination success rate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- What We Offer -->
     <div class="bg-light rounded-3 p-5 mb-5">
         <h2 class="text-center fw-bold mb-5">What We Offer</h2>
         <div class="row g-4">
             <div class="col-md-6">
-                <div class="d-flex">
-                    <div class="flex-shrink-0">
-                        <i class="fas fa-check-circle text-success fa-2x me-3"></i>
-                    </div>
+                <div class="d-flex align-items-start">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=60&h=60&fit=crop" class="rounded-circle me-3" width="60" height="60" alt="Courses">
                     <div>
                         <h5 class="fw-bold">Grade 1-13 Comprehensive Courses</h5>
-                        <p class="text-muted">Complete academic support from primary to advanced levels, covering all major subjects including Mathematics, Science, and Languages.</p>
+                        <p class="text-muted">Complete academic support from primary to advanced levels, covering all major subjects.</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="d-flex">
-                    <div class="flex-shrink-0">
-                        <i class="fas fa-check-circle text-success fa-2x me-3"></i>
-                    </div>
+                <div class="d-flex align-items-start">
+                    <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=60&h=60&fit=crop" class="rounded-circle me-3" width="60" height="60" alt="Languages">
                     <div>
                         <h5 class="fw-bold">German & Japanese Language Courses</h5>
-                        <p class="text-muted">Professional language training from beginner to advanced levels with native speakers and certified instructors.</p>
+                        <p class="text-muted">Professional language training from beginner to advanced levels with native speakers.</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="d-flex">
-                    <div class="flex-shrink-0">
-                        <i class="fas fa-check-circle text-success fa-2x me-3"></i>
-                    </div>
+                <div class="d-flex align-items-start">
+                    <img src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=60&h=60&fit=crop" class="rounded-circle me-3" width="60" height="60" alt="Online">
                     <div>
                         <h5 class="fw-bold">Flexible Learning Modes</h5>
-                        <p class="text-muted">Choose from physical classes, online live sessions, recorded courses, or hybrid learning based on your preferences.</p>
+                        <p class="text-muted">Choose from physical classes, online live sessions, recorded courses, or hybrid learning.</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="d-flex">
-                    <div class="flex-shrink-0">
-                        <i class="fas fa-check-circle text-success fa-2x me-3"></i>
-                    </div>
+                <div class="d-flex align-items-start">
+                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=60&h=60&fit=crop" class="rounded-circle me-3" width="60" height="60" alt="Teachers">
                     <div>
                         <h5 class="fw-bold">Expert Teachers</h5>
-                        <p class="text-muted">Highly qualified and experienced educators with proven track records in their respective fields.</p>
+                        <p class="text-muted">Highly qualified and experienced educators with proven track records.</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="d-flex">
-                    <div class="flex-shrink-0">
-                        <i class="fas fa-check-circle text-success fa-2x me-3"></i>
-                    </div>
+                <div class="d-flex align-items-start">
+                    <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=60&h=60&fit=crop" class="rounded-circle me-3" width="60" height="60" alt="Facilities">
                     <div>
                         <h5 class="fw-bold">Modern Teaching Facilities</h5>
-                        <p class="text-muted">State-of-the-art classrooms equipped with the latest technology to enhance the learning experience.</p>
+                        <p class="text-muted">State-of-the-art classrooms equipped with the latest technology.</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="d-flex">
-                    <div class="flex-shrink-0">
-                        <i class="fas fa-check-circle text-success fa-2x me-3"></i>
-                    </div>
+                <div class="d-flex align-items-start">
+                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=60&h=60&fit=crop" class="rounded-circle me-3" width="60" height="60" alt="Attention">
                     <div>
                         <h5 class="fw-bold">Personalized Attention</h5>
                         <p class="text-muted">Small class sizes ensuring each student receives individual attention and support.</p>
@@ -119,7 +233,7 @@
         <div class="col-md-3 mb-4">
             <div class="card border-0 shadow-sm h-100">
                 <div class="card-body">
-                    <i class="fas fa-calendar-alt fa-3x text-primary mb-3"></i>
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=80&h=80&fit=crop" class="rounded-circle mb-3" width="80" height="80" alt="Established">
                     <h3 class="fw-bold">2020</h3>
                     <p class="text-muted">Established</p>
                 </div>
@@ -128,7 +242,7 @@
         <div class="col-md-3 mb-4">
             <div class="card border-0 shadow-sm h-100">
                 <div class="card-body">
-                    <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=80&h=80&fit=crop" class="rounded-circle mb-3" width="80" height="80" alt="Students">
                     <h3 class="fw-bold">500+</h3>
                     <p class="text-muted">Students</p>
                 </div>
@@ -137,7 +251,7 @@
         <div class="col-md-3 mb-4">
             <div class="card border-0 shadow-sm h-100">
                 <div class="card-body">
-                    <i class="fas fa-chalkboard-teacher fa-3x text-primary mb-3"></i>
+                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=80&h=80&fit=crop" class="rounded-circle mb-3" width="80" height="80" alt="Teachers">
                     <h3 class="fw-bold">20+</h3>
                     <p class="text-muted">Teachers</p>
                 </div>
@@ -146,7 +260,7 @@
         <div class="col-md-3 mb-4">
             <div class="card border-0 shadow-sm h-100">
                 <div class="card-body">
-                    <i class="fas fa-trophy fa-3x text-primary mb-3"></i>
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=80&h=80&fit=crop" class="rounded-circle mb-3" width="80" height="80" alt="Success">
                     <h3 class="fw-bold">95%</h3>
                     <p class="text-muted">Success Rate</p>
                 </div>
@@ -159,37 +273,46 @@
         <h2 class="text-center fw-bold mb-5">Our Core Values</h2>
         <div class="row g-4">
             <div class="col-md-4">
-                <div class="text-center">
-                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
-                        <i class="fas fa-star fa-2x"></i>
+                <div class="card value-card h-100 border-0 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=200&fit=crop" class="card-img-top" alt="Excellence" style="height: 180px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px; margin-top: -50px; position: relative; z-index: 1;">
+                            <i class="fas fa-star fa-lg"></i>
+                        </div>
+                        <h4 class="fw-bold">Excellence</h4>
+                        <p class="text-muted">We strive for excellence in everything we do, from teaching to student support.</p>
                     </div>
-                    <h4 class="fw-bold">Excellence</h4>
-                    <p class="text-muted">We strive for excellence in everything we do, from teaching to student support.</p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="text-center">
-                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
-                        <i class="fas fa-lightbulb fa-2x"></i>
+                <div class="card value-card h-100 border-0 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=200&fit=crop" class="card-img-top" alt="Innovation" style="height: 180px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px; margin-top: -50px; position: relative; z-index: 1;">
+                            <i class="fas fa-lightbulb fa-lg"></i>
+                        </div>
+                        <h4 class="fw-bold">Innovation</h4>
+                        <p class="text-muted">We embrace innovative teaching methods and technology to enhance learning.</p>
                     </div>
-                    <h4 class="fw-bold">Innovation</h4>
-                    <p class="text-muted">We embrace innovative teaching methods and technology to enhance learning.</p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="text-center">
-                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
-                        <i class="fas fa-heart fa-2x"></i>
+                <div class="card value-card h-100 border-0 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=400&h=200&fit=crop" class="card-img-top" alt="Care" style="height: 180px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px; margin-top: -50px; position: relative; z-index: 1;">
+                            <i class="fas fa-heart fa-lg"></i>
+                        </div>
+                        <h4 class="fw-bold">Care</h4>
+                        <p class="text-muted">We care about each student's individual needs and create a supportive environment.</p>
                     </div>
-                    <h4 class="fw-bold">Care</h4>
-                    <p class="text-muted">We care about each student's individual needs and create a supportive environment.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Contact CTA -->
-    <div class="bg-primary text-white rounded-3 p-5 text-center">
+    <div class="rounded-3 p-5 text-center text-white" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.95), rgba(124, 58, 237, 0.9)), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&h=400&fit=crop'); background-size: cover; background-position: center;">
         <h2 class="display-6 fw-bold mb-3">Ready to Join Our Learning Community?</h2>
         <p class="lead mb-4">Contact us today to learn more about our programs and enrollment process.</p>
         <div class="d-flex gap-3 justify-content-center flex-wrap">
